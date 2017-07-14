@@ -1,4 +1,4 @@
-package client
+package events
 
 var MySQLErrName = map[uint16]string{
 	ER_HASHCHK:                                       "hashchk",

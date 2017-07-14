@@ -1,4 +1,4 @@
-package client
+package events
 
 const (
 	DEFAULT_MYSQL_STATE = "HY000"

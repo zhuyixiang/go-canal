@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"strings"
 	"testing"
-
+	. "github.com/zhuyixiang/go-canal/events"
 	check "github.com/pingcap/check"
 )
 

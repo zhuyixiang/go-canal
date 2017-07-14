@@ -1,4 +1,4 @@
-package client
+package events
 
 import (
 	"crypto/rand"

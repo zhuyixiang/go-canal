@@ -2,16 +2,9 @@ package client
 
 import (
 	"fmt"
-
-	"github.com/juju/errors"
+	. "github.com/zhuyixiang/go-canal/events"
 )
 
-var (
-	ErrBadConn       = errors.New("connection was bad")
-	ErrMalformPacket = errors.New("Malform packet error")
-
-	ErrTxDone = errors.New("sql: Transaction has already been committed or rolled back")
-)
 
 type MyError struct {
 	Code    uint16

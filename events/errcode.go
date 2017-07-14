@@ -1,4 +1,4 @@
-package client
+package events
 
 const (
 	ER_ERROR_FIRST                                                      uint16 = 1000

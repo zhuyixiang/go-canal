@@ -1,4 +1,4 @@
-package client
+package events
 
 type Result struct {
 	Status uint16

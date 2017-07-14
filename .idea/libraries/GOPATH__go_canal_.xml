@@ -2,6 +2,7 @@
   <library name="GOPATH &lt;go-canal&gt;">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../../../golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../launchpad.net" />
       <root url="file://$PROJECT_DIR$/../../../git.elenet.me" />
       <root url="file://$PROJECT_DIR$/../../../sourcegraph.com" />
       <root url="file://$PROJECT_DIR$/../.." />
@@ -10,6 +11,7 @@
     <JAVADOC />
     <SOURCES>
       <root url="file://$PROJECT_DIR$/../../../golang.org" />
+      <root url="file://$PROJECT_DIR$/../../../launchpad.net" />
       <root url="file://$PROJECT_DIR$/../../../git.elenet.me" />
       <root url="file://$PROJECT_DIR$/../../../sourcegraph.com" />
       <root url="file://$PROJECT_DIR$/../.." />

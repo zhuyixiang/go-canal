@@ -2,13 +2,10 @@ package client
 
 import (
 	"bytes"
-	"crypto/tls"
 	"encoding/binary"
-
 	"github.com/juju/errors"
-	//. "github.com/siddontang/go-mysql/mysql"
-	//"github.com/siddontang/go-mysql/packet"
-	"github.com/siddontang/go-mysql/packet"
+
+	. "github.com/zhuyixiang/go-canal/events"
 )
 
 func (c *Conn) readInitialHandshake() error {
@@ -126,25 +123,6 @@ func (c *Conn) writeAuthHandshake() error {
 	//Charset [1 byte]
 	//use default collation id 33 here, is utf-8
 	data[12] = byte(DEFAULT_COLLATION_ID)
-
-	// SSL Connection Request Packet
-	// http://dev.mysql.com/doc/internals/en/connection-phase-packets.html#packet-Protocol::SSLRequest
-	if c.TLSConfig != nil {
-		// Send TLS / SSL request packet
-		if err := c.WritePacket(data[:(4+4+1+23)+4]); err != nil {
-			return err
-		}
-
-		// Switch to TLS
-		tlsConn := tls.Client(c.Conn, c.TLSConfig)
-		if err := tlsConn.Handshake(); err != nil {
-			return err
-		}
-
-		currentSequence := c.Sequence
-		c.Conn = packet.NewConn(tlsConn)
-		c.Sequence = currentSequence
-	}
 
 	//Filler [23 bytes] (all 0x00)
 	pos := 13 + 23

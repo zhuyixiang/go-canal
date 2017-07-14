@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"io"
 	"github.com/juju/errors"
+	. "github.com/zhuyixiang/go-canal/events"
 )
 
 func NewConn(conn net.Conn) *Conn {
