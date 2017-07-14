@@ -59,8 +59,8 @@ func testDumpLog() {
 	syncer := NewBinlogSyncer(config)
 
 	position := Position{}
-	position.Pos = 4
-	position.Name = "mysql-bin.000038"
+	position.Pos = 0
+	//position.Name = "mysql-bin.000038"
 
 	syncer.StartSync(position)
 

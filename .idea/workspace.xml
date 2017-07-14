@@ -2,36 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="484130a8-20cb-46c4-8ebc-7fc28e5bc6c6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/canal/binlogsyncer.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/canal/canal.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/canal/parser.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/events/binlog_const.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/events/config.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/events/event.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/events/handler.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/events/json_binary.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/events/position.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/events/row_event.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/events/schema.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/events/time.go" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/const.go" afterPath="$PROJECT_DIR$/events/const.go" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/errcode.go" afterPath="$PROJECT_DIR$/events/errcode.go" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/errname.go" afterPath="$PROJECT_DIR$/events/errname.go" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/field.go" afterPath="$PROJECT_DIR$/events/field.go" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/parse_binary.go" afterPath="$PROJECT_DIR$/events/parse_binary.go" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/result.go" afterPath="$PROJECT_DIR$/events/result.go" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/resultset.go" afterPath="$PROJECT_DIR$/events/resultset.go" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/state.go" afterPath="$PROJECT_DIR$/events/state.go" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/util.go" afterPath="$PROJECT_DIR$/events/util.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/GOPATH__go_canal_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/GOPATH__go_canal_.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/auth.go" afterPath="$PROJECT_DIR$/client/auth.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/conn.go" afterPath="$PROJECT_DIR$/client/conn.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/conn_packet.go" afterPath="$PROJECT_DIR$/client/conn_packet.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/conn_test.go" afterPath="$PROJECT_DIR$/client/conn_test.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/error.go" afterPath="$PROJECT_DIR$/client/error.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/resp.go" afterPath="$PROJECT_DIR$/client/resp.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/stmt.go" afterPath="$PROJECT_DIR$/client/stmt.go" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/canal/sync.go" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/events/rows.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/canal/canal.go" afterPath="$PROJECT_DIR$/canal/canal.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/events/config.go" afterPath="$PROJECT_DIR$/events/config.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/main.go" afterPath="$PROJECT_DIR$/main/main.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,20 +24,44 @@
       <file leaf-file-name="canal.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/canal/canal.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="66" lean-forward="true" selection-start-line="20" selection-start-column="66" selection-end-line="20" selection-end-column="66" />
+            <state relative-caret-position="-30">
+              <caret line="62" column="29" lean-forward="true" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
               <folding>
-                <element signature="e#15#137#0" expanded="true" />
+                <element signature="e#15#211#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="rows.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/events/rows.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+              <folding>
+                <element signature="e#16#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sync.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/canal/sync.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding>
+                <element signature="e#15#224#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="64" column="34" lean-forward="true" selection-start-line="64" selection-start-column="34" selection-end-line="64" selection-end-column="34" />
+            <state relative-caret-position="990">
+              <caret line="66" column="29" lean-forward="true" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
               <folding>
                 <element signature="e#14#234#0" expanded="true" />
               </folding>
@@ -71,12 +69,34 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="parser.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/canal/parser.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="config.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/events/config.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+            <state relative-caret-position="285">
+              <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="schema.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/events/schema.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="705">
+              <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+              <folding>
+                <element signature="e#173#228#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,8 +104,8 @@
       <file leaf-file-name="binlogsyncer.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/canal/binlogsyncer.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="17" />
+            <state relative-caret-position="-1158">
+              <caret line="172" column="33" lean-forward="false" selection-start-line="172" selection-start-column="33" selection-end-line="172" selection-end-column="33" />
               <folding>
                 <element signature="e#15#227#0" expanded="true" />
               </folding>
@@ -144,6 +164,7 @@
       <find>ParseBinaryInt16</find>
       <find>ErrMalformPacket</find>
       <find>Escape</find>
+      <find>schema.</find>
     </findStrings>
     <replaceStrings>
       <replace>check.Equals,</replace>
@@ -162,8 +183,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mysql/LogFetchClient.go" />
-        <option value="$PROJECT_DIR$/client/gtid.go" />
         <option value="$PROJECT_DIR$/client/const.go" />
         <option value="$PROJECT_DIR$/client/errcode.go" />
         <option value="$PROJECT_DIR$/client/errname.go" />
@@ -209,10 +228,12 @@
         <option value="$PROJECT_DIR$/events/handler.go" />
         <option value="$PROJECT_DIR$/events/position.go" />
         <option value="$PROJECT_DIR$/canal/config.go" />
-        <option value="$PROJECT_DIR$/events/config.go" />
         <option value="$PROJECT_DIR$/canal/binlogsyncer.go" />
-        <option value="$PROJECT_DIR$/canal/canal.go" />
         <option value="$PROJECT_DIR$/main/main.go" />
+        <option value="$PROJECT_DIR$/events/rows.go" />
+        <option value="$PROJECT_DIR$/events/config.go" />
+        <option value="$PROJECT_DIR$/canal/sync.go" />
+        <option value="$PROJECT_DIR$/canal/canal.go" />
       </list>
     </option>
   </component>
@@ -279,7 +300,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="events" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="go-canal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="go-canal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canal" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -305,8 +340,8 @@
       <recent name="$PROJECT_DIR$/main" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/events" />
       <recent name="$PROJECT_DIR$/canal" />
+      <recent name="$PROJECT_DIR$/events" />
       <recent name="$PROJECT_DIR$/dumper" />
       <recent name="$PROJECT_DIR$/client" />
       <recent name="$PROJECT_DIR$" />
@@ -1035,7 +1070,7 @@
       <workItem from="1499310425988" duration="70000" />
       <workItem from="1499310497939" duration="10618000" />
       <workItem from="1499399237190" duration="16860000" />
-      <workItem from="1499941854159" duration="17516000" />
+      <workItem from="1499941854159" duration="18588000" />
     </task>
     <servers />
   </component>
@@ -1072,7 +1107,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45064000" />
+    <option name="totallyTimeSpent" value="46136000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1106,9 +1141,9 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24087591" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28759125" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24355777" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1180,22 +1215,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main/main_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/go/1.8.1/libexec/src/bufio/bufio.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2790">
-          <caret line="191" column="0" lean-forward="false" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1456,14 +1475,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/events/schema.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="32" lean-forward="false" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/events/row_event.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1518,16 +1529,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/canal/parser.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="257" column="18" lean-forward="true" selection-start-line="257" selection-start-column="18" selection-end-line="257" selection-end-column="18" />
-          <folding>
-            <element signature="e#15#139#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/Cellar/go/1.8.1/libexec/src/net/net.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2197">
@@ -1544,10 +1545,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="66" column="29" lean-forward="true" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
+          <folding>
+            <element signature="e#14#234#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/events/schema.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding>
+            <element signature="e#173#228#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/events/rows.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+          <folding>
+            <element signature="e#16#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/canal/binlogsyncer.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="17" />
+        <state relative-caret-position="-1158">
+          <caret line="172" column="33" lean-forward="false" selection-start-line="172" selection-start-column="33" selection-end-line="172" selection-end-column="33" />
           <folding>
             <element signature="e#15#227#0" expanded="true" />
           </folding>
@@ -1556,28 +1587,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/events/config.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+        <state relative-caret-position="285">
+          <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/canal/parser.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/canal/canal.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="66" lean-forward="true" selection-start-line="20" selection-start-column="66" selection-end-line="20" selection-end-column="66" />
+        <state relative-caret-position="-30">
+          <caret line="62" column="29" lean-forward="true" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
           <folding>
-            <element signature="e#15#137#0" expanded="true" />
+            <element signature="e#15#211#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/main.go">
+    <entry file="file://$PROJECT_DIR$/canal/sync.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="64" column="34" lean-forward="true" selection-start-line="64" selection-start-column="34" selection-end-line="64" selection-end-column="34" />
+        <state relative-caret-position="225">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
-            <element signature="e#14#234#0" expanded="true" />
+            <element signature="e#15#224#0" expanded="true" />
           </folding>
         </state>
       </provider>
