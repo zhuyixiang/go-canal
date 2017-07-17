@@ -7,8 +7,6 @@ import (
 	"github.com/juju/errors"
 	"github.com/ngaut/log"
 	. "github.com/zhuyixiang/go-canal/events"
-	"github.com/siddontang/go-mysql/replication"
-	"github.com/siddontang/go-mysql/schema"
 )
 
 var (
@@ -24,7 +22,7 @@ func (c *Canal) startSyncBinlog(pos Position) error {
 	}
 
 	for {
-		ev, err := c.syncer.GetEvent(c.ctx)
+		ev, err := c.syncer.GetEvent()
 
 		if err != nil {
 			return errors.Trace(err)
@@ -39,7 +37,7 @@ func (c *Canal) startSyncBinlog(pos Position) error {
 		// which tells the whole transaction is over.
 		// TODO: If we meet any DDL query, we must save too.
 		switch e := ev.Event.(type) {
-		case *replication.RotateEvent:
+		case *RotateEvent:
 			pos.Name = string(e.NextLogName)
 			pos.Pos = uint32(e.Position)
 			log.Infof("rotate binlog to %s", pos)
@@ -47,21 +45,21 @@ func (c *Canal) startSyncBinlog(pos Position) error {
 			if err = c.eventHandler.OnRotate(e); err != nil {
 				return errors.Trace(err)
 			}
-		case *replication.RowsEvent:
+		case *RowLogEvent:
 			// we only focus row based event
 			err = c.handleRowsEvent(ev)
-			if err != nil && errors.Cause(err) != schema.ErrTableNotExist {
+			if err != nil && errors.Cause(err) != ErrTableNotExist {
 				// We can ignore table not exist error
 				log.Errorf("handle rows event at (%s, %d) error %v", pos.Name, curPos, err)
 				return errors.Trace(err)
 			}
 			continue
-		case *replication.XIDEvent:
+		case *XIDEvent:
 			// try to save the position later
 			if err := c.eventHandler.OnXID(pos); err != nil {
 				return errors.Trace(err)
 			}
-		case *replication.QueryEvent:
+		case *QueryEvent:
 			// handle alert table query
 			if mb := expAlterTable.FindSubmatch(e.Query); mb != nil {
 				if len(mb[1]) == 0 {
@@ -86,8 +84,8 @@ func (c *Canal) startSyncBinlog(pos Position) error {
 	return nil
 }
 
-func (c *Canal) handleRowsEvent(e *replication.BinlogEvent) error {
-	ev := e.Event.(*replication.RowsEvent)
+func (c *Canal) handleRowsEvent(e *BinlogEvent) error {
+	ev := e.Event.(*RowLogEvent)
 
 	// Caveat: table may be altered at runtime.
 	schema := string(ev.Table.Schema)
@@ -99,11 +97,11 @@ func (c *Canal) handleRowsEvent(e *replication.BinlogEvent) error {
 	}
 	var action string
 	switch e.Header.EventType {
-	case replication.WRITE_ROWS_EVENTv1, replication.WRITE_ROWS_EVENTv2:
+	case WRITE_ROWS_EVENTv1, WRITE_ROWS_EVENTv2:
 		action = InsertAction
-	case replication.DELETE_ROWS_EVENTv1, replication.DELETE_ROWS_EVENTv2:
+	case DELETE_ROWS_EVENTv1, DELETE_ROWS_EVENTv2:
 		action = DeleteAction
-	case replication.UPDATE_ROWS_EVENTv1, replication.UPDATE_ROWS_EVENTv2:
+	case UPDATE_ROWS_EVENTv1, UPDATE_ROWS_EVENTv2:
 		action = UpdateAction
 	default:
 		return errors.Errorf("%s not supported now", e.Header.EventType)

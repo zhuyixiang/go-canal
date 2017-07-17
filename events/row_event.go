@@ -196,7 +196,7 @@ func (e *TableMapEvent) Dump(w io.Writer) {
 // RowsEventStmtEndFlag is set in the end of the statement.
 const RowsEventStmtEndFlag = 0x01
 
-type RowsEvent struct {
+type RowLogEvent struct {
 	//0, 1, 2
 	Version       int
 
@@ -228,7 +228,7 @@ type RowsEvent struct {
 	ParseTime     bool
 }
 
-func (e *RowsEvent) Decode(data []byte) error {
+func (e *RowLogEvent) Decode(data []byte) error {
 	pos := 0
 	e.TableID = FixedLengthInt(data[0:e.TableIDSize])
 	pos += e.TableIDSize
@@ -297,7 +297,7 @@ func isBitSet(bitmap []byte, i int) bool {
 	return bitmap[i>>3]&(1<<(uint(i)&7)) > 0
 }
 
-func (e *RowsEvent) decodeRows(data []byte, table *TableMapEvent, bitmap []byte) (int, error) {
+func (e *RowLogEvent) decodeRows(data []byte, table *TableMapEvent, bitmap []byte) (int, error) {
 	row := make([]interface{}, e.ColumnCount)
 
 	pos := 0
@@ -343,7 +343,7 @@ func (e *RowsEvent) decodeRows(data []byte, table *TableMapEvent, bitmap []byte)
 	return pos, nil
 }
 
-func (e *RowsEvent) parseFracTime(t interface{}) interface{} {
+func (e *RowLogEvent) parseFracTime(t interface{}) interface{} {
 	v, ok := t.(fracTime)
 	if !ok {
 		return t
@@ -359,7 +359,7 @@ func (e *RowsEvent) parseFracTime(t interface{}) interface{} {
 }
 
 // see mysql sql/log_event.cc log_event_print_value
-func (e *RowsEvent) decodeValue(data []byte, tp byte, meta uint16) (v interface{}, n int, err error) {
+func (e *RowLogEvent) decodeValue(data []byte, tp byte, meta uint16) (v interface{}, n int, err error) {
 	var length int = 0
 
 	if tp == MYSQL_TYPE_STRING {
@@ -801,7 +801,7 @@ func decodeBlob(data []byte, meta uint16) (v []byte, n int, err error) {
 	return
 }
 
-func (e *RowsEvent) Dump(w io.Writer) {
+func (e *RowLogEvent) Dump(w io.Writer) {
 	fmt.Fprintf(w, "TableID: %d\n", e.TableID)
 	fmt.Fprintf(w, "Flags: %d\n", e.Flags)
 	fmt.Fprintf(w, "Column count: %d\n", e.ColumnCount)

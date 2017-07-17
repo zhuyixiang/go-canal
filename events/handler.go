@@ -1,13 +1,8 @@
 package events
 
-import (
-
-)
-import "github.com/siddontang/go-mysql/replication"
-
 type EventHandler interface {
 	OnRotate(roateEvent *RotateEvent) error
-	OnDDL(nextPos Position, queryEvent *replication.QueryEvent) error
+	OnDDL(nextPos Position, queryEvent *QueryEvent) error
 	OnRow(e *RowsEvent) error
 	OnXID(nextPos Position) error
 	String() string
@@ -16,8 +11,8 @@ type EventHandler interface {
 type DummyEventHandler struct {
 }
 
-func (h *DummyEventHandler) OnRotate(*replication.RotateEvent) error { return nil }
-func (h *DummyEventHandler) OnDDL(Position, *replication.QueryEvent) error {
+func (h *DummyEventHandler) OnRotate(*RotateEvent) error { return nil }
+func (h *DummyEventHandler) OnDDL(Position, *QueryEvent) error {
 	return nil
 }
 func (h *DummyEventHandler) OnRow(*RowsEvent) error     { return nil }

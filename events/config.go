@@ -6,7 +6,7 @@ type MysqlConfig struct {
 	// Host is for MySQL server host.
 	Host      string
 	// Port is for MySQL server port.
-	Port      uint16
+	Port      int
 	// User is for MySQL user.
 	User      string
 	// Password is for MySQL password.

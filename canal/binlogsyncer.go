@@ -245,7 +245,7 @@ func (b *BinlogSyncer) writeRegisterSlaveCommand() error {
 	n = copy(data[pos:], b.cfg.Password)
 	pos += n
 
-	binary.LittleEndian.PutUint16(data[pos:], b.cfg.Port)
+	binary.LittleEndian.PutUint16(data[pos:], uint16(b.cfg.Port))
 	pos += 2
 
 	//replication rank, not used

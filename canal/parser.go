@@ -214,7 +214,7 @@ func (p *BinlogParser) parseEvent(h *EventHeader, data []byte) (Event, error) {
 		p.tables[te.TableID] = te
 	}
 
-	if re, ok := e.(*RowsEvent); ok {
+	if re, ok := e.(*RowLogEvent); ok {
 		if (re.Flags & RowsEventStmtEndFlag) > 0 {
 			// Refer https://github.com/alibaba/canal/blob/38cc81b7dab29b51371096fb6763ca3a8432ffee/dbsync/src/main/java/com/taobao/tddl/dbsync/binlog/event/RowsLogEvent.java#L176
 			p.tables = make(map[uint64]*TableMapEvent)
@@ -254,8 +254,8 @@ func (p *BinlogParser) Parse(data []byte) (*BinlogEvent, error) {
 	return &BinlogEvent{rawData, h, e}, nil
 }
 
-func (p *BinlogParser) newRowsEvent(h *EventHeader) *RowsEvent {
-	e := &RowsEvent{}
+func (p *BinlogParser) newRowsEvent(h *EventHeader) *RowLogEvent {
+	e := &RowLogEvent{}
 	if p.format.EventTypeHeaderLengths[h.EventType-1] == 6 {
 		e.TableIDSize = 4
 	} else {

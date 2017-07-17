@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"flag"
 	. "github.com/zhuyixiang/go-canal/events"
-	client "github.com/zhuyixiang/go-canal/client"
+	"github.com/zhuyixiang/go-canal/client"
 	. "github.com/zhuyixiang/go-canal/canal"
 
 	"github.com/ngaut/log"

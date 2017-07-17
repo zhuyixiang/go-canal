@@ -5,8 +5,8 @@ import (
 	"golang.org/x/net/context"
 	. "github.com/zhuyixiang/go-canal/events"
 	"github.com/juju/errors"
-	"github.com/siddontang/go-mysql/schema"
 	"fmt"
+	"strconv"
 )
 
 type Canal struct {
@@ -36,7 +36,7 @@ func (c *Canal) SetEventHandler(h EventHandler) {
 	c.eventHandler = h
 }
 
-func (c *Canal) GetTable(db string, table string) (*schema.Table, error) {
+func (c *Canal) GetTable(db string, table string) (*Table, error) {
 	key := fmt.Sprintf("%s.%s", db, table)
 	t, ok := c.tables[key]
 
@@ -44,11 +44,11 @@ func (c *Canal) GetTable(db string, table string) (*schema.Table, error) {
 		return t, nil
 	}
 
-	t, err := schema.NewTable(c, db, table)
+	t, err := NewTable(c, db, table)
 	if err != nil {
 		// check table not exists
-		if ok, err1 := schema.IsTableExist(c, db, table); err1 == nil && !ok {
-			return nil, schema.ErrTableNotExist
+		if ok, err1 := IsTableExist(c, db, table); err1 == nil && !ok {
+			return nil, ErrTableNotExist
 		}
 
 		return nil, errors.Trace(err)
@@ -70,7 +70,7 @@ func (c *Canal) Execute(cmd string, args ...interface{}) (rr *Result, err error)
 	retryNum := 3
 	for i := 0; i < retryNum; i++ {
 		if c.conn == nil {
-			c.conn, err = client.Connect(c.cfg.Host + ":" + c.cfg.Port, c.cfg.User, c.cfg.Password, "")
+			c.conn, err = client.Connect(c.cfg.Host + ":" + strconv.Itoa(c.cfg.Port), c.cfg.User, c.cfg.Password, "")
 			if err != nil {
 				return nil, errors.Trace(err)
 			}
