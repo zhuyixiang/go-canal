@@ -3,10 +3,7 @@ package main
 import (
 	"fmt"
 	"flag"
-	. "github.com/zhuyixiang/go-canal/events"
 	"github.com/zhuyixiang/go-canal/client"
-	. "github.com/zhuyixiang/go-canal/canal"
-
 	"github.com/ngaut/log"
 	"golang.org/x/net/context"
 	"time"
@@ -18,20 +15,6 @@ var testUser = flag.String("user", "root", "MySQL user")
 var testPassword = flag.String("pass", "123456", "MySQL password")
 var testDB = flag.String("db", "test1", "MySQL test database")
 
-type MyEventHandler struct {
-	DummyEventHandler
-}
-
-func (h *MyEventHandler) OnRow(e *RowsEvent) error {
-	log.Infof("%s %v %s\n", e.Action, e.Rows, e.Table)
-	return nil
-}
-
-func (h *MyEventHandler) OnDDL(nextPos Position, queryEvent *QueryEvent) error {
-	log.Infof("%s \n", queryEvent.Query)
-	return nil
-}
-
 func main() {
 	//testConnect()
 
@@ -39,29 +22,11 @@ func main() {
 
 	//testContext();
 
-	testCanal()
+	//testCanal()
+
+	testMysqlDriver()
+
 	time.Sleep(time.Second * 5)
-}
-
-
-func testCanal(){
-	config := &MysqlConfig{}
-	config.Host = *testHost
-	config.User = *testUser
-	config.Port = 3306
-	config.Password = *testPassword
-	config.ServerID = 5004
-	config.Pos = Position{}
-
-
-	canal := NewCanal(config)
-
-	canal.SetEventHandler(&MyEventHandler{})
-
-
-	canal.Start()
-
-	time.Sleep(10 * time.Second)
 }
 
 func testConnect() {
@@ -79,49 +44,6 @@ func testConnect() {
 	//result, _ = conn.Execute("select * from t1;");
 
 	fmt.Println(result.RowDatas)
-}
-
-func testDumpLog() {
-	config := &MysqlConfig{}
-	config.Host = *testHost
-	config.User = *testUser
-	config.Port = 3306
-	config.Password = *testPassword
-	config.ServerID = 5004
-	//config.Charset = "utf-8"
-
-
-	syncer := NewBinlogSyncer(config)
-
-	position := Position{}
-	position.Pos = 0
-	//position.Name = "mysql-bin.000038"
-
-	syncer.StartSync(position)
-
-	go printEvent(syncer)
-
-	time.Sleep(10 * time.Second)
-}
-
-func printEvent(syncer *BinlogSyncer) {
-	for {
-		if (syncer.IsClosed()) {
-			break
-		}
-		binlogEvent, err := syncer.GetEvent()
-		if (err != nil) {
-			fmt.Println(err)
-			break
-		}
-
-		fmt.Print("[")
-		for _, byte := range binlogEvent.RawData {
-			fmt.Printf("%x ", byte)
-		}
-		fmt.Println("]");
-
-	}
 }
 
 func testContext() {
