@@ -24,12 +24,15 @@ type Canal struct {
 	curPos       Position
 }
 
-func NewCanal(cfg *MysqlConfig) {
+func NewCanal(cfg *MysqlConfig) (*Canal) {
 	c := new(Canal)
 	c.cfg = cfg
 	c.curPos = cfg.Pos
 	c.syncer = NewBinlogSyncer(cfg)
+	c.tables = make(map[string]*Table)
+
 	c.ctx, c.cancel = context.WithCancel(context.Background())
+	return c
 }
 
 func (c *Canal) SetEventHandler(h EventHandler) {

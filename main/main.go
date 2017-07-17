@@ -10,7 +10,6 @@ import (
 	"github.com/ngaut/log"
 	"golang.org/x/net/context"
 	"time"
-
 )
 
 var testHost = flag.String("host", "172.16.20.146", "MySQL server host")
@@ -19,14 +18,50 @@ var testUser = flag.String("user", "root", "MySQL user")
 var testPassword = flag.String("pass", "123456", "MySQL password")
 var testDB = flag.String("db", "test1", "MySQL test database")
 
+type MyEventHandler struct {
+	DummyEventHandler
+}
+
+func (h *MyEventHandler) OnRow(e *RowsEvent) error {
+	log.Infof("%s %v %s\n", e.Action, e.Rows, e.Table)
+	return nil
+}
+
+func (h *MyEventHandler) OnDDL(nextPos Position, queryEvent *QueryEvent) error {
+	log.Infof("%s \n", queryEvent.Query)
+	return nil
+}
+
 func main() {
 	//testConnect()
 
-	testDumpLog()
+	//testDumpLog()
 
 	//testContext();
 
+	testCanal()
 	time.Sleep(time.Second * 5)
+}
+
+
+func testCanal(){
+	config := &MysqlConfig{}
+	config.Host = *testHost
+	config.User = *testUser
+	config.Port = 3306
+	config.Password = *testPassword
+	config.ServerID = 5004
+	config.Pos = Position{}
+
+
+	canal := NewCanal(config)
+
+	canal.SetEventHandler(&MyEventHandler{})
+
+
+	canal.Start()
+
+	time.Sleep(10 * time.Second)
 }
 
 func testConnect() {
