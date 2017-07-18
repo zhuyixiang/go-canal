@@ -7,21 +7,26 @@ import (
 )
 
 func testMysqlDriver() {
-	db, err := sql.Open("mysql", "root:123456@tcp(172.16.20.146:3307)/test1")
+
+	db, err := sql.Open("mysql", "root:123456@tcp(172.16.20.146:3307)/information_schema")
 	if err != nil {
 		panic(err.Error())  // Just for example purpose. You should use proper error handling instead of panic
 	}
 	defer db.Close()
 
+	//stmtChange, err := db.Prepare("use test1;");
+	//
+	//stmtChange.Exec()
+
 	// Prepare statement for inserting data
-	stmtIns, err := db.Prepare("INSERT INTO t3 (val) VALUES(  ? )") // ? = placeholder
+	stmtIns, err := db.Prepare("INSERT INTO test1.t3 (val) VALUES(  ? )") // ? = placeholder
 	if err != nil {
 		panic(err.Error()) // proper error handling instead of panic in your app
 	}
 	defer stmtIns.Close() // Close the statement when we leave main() / the program terminates
 
 	// Prepare statement for reading data
-	stmtOut, err := db.Prepare("SELECT id FROM t3 WHERE val = ?")
+	stmtOut, err := db.Prepare("SELECT id FROM test1.t3 WHERE val = ?")
 	if err != nil {
 		panic(err.Error()) // proper error handling instead of panic in your app
 	}
@@ -52,11 +57,11 @@ func testMysqlDriver() {
 	fmt.Printf("The square number of 1 is: %d", squareNum)
 
 
-	stmtCraete, err := db.Prepare("CREATE TABLE `t4` (" +
-		"`id` int(11) NOT NULL AUTO_INCREMENT," +
-		"`val` varchar(45) DEFAULT NULL," +
-		"PRIMARY KEY (`id`)" +
-		") ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;");
-
-	stmtCraete.Exec()
+	//stmtCraete, err := db.Prepare("CREATE TABLE `test1.t5` (" +
+	//	"`id` int(11) NOT NULL AUTO_INCREMENT," +
+	//	"`val` varchar(45) DEFAULT NULL," +
+	//	"PRIMARY KEY (`id`)" +
+	//	") ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;");
+	//
+	//stmtCraete.Exec()
 }

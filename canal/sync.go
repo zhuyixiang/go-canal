@@ -13,11 +13,16 @@ var (
 	expAlterTable = regexp.MustCompile("(?i)^ALTER\\sTABLE\\s.*?`{0,1}(.*?)`{0,1}\\.{0,1}`{0,1}([^`\\.]+?)`{0,1}\\s.*")
 )
 
-func (c *Canal) Start() error {
-	return c.StartSyncBinlog(c.cfg.Pos)
+func (c *Canal) Start(){
+	go func(){
+		err := c.startSyncBinlog(c.cfg.Pos)
+		if err != nil {
+			log.Error(err)
+		}
+	}()
 }
 
-func (c *Canal) StartSyncBinlog(pos Position) error {
+func (c *Canal) startSyncBinlog(pos Position) error {
 	log.Infof("start sync binlog at %v", pos)
 
 	err := c.syncer.StartSync(pos)

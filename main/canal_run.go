@@ -3,6 +3,7 @@ package main
 import (
 	. "github.com/zhuyixiang/go-canal/events"
 	. "github.com/zhuyixiang/go-canal/canal"
+	. "github.com/zhuyixiang/go-canal/apply"
 	"github.com/ngaut/log"
 	"time"
 )
@@ -21,7 +22,7 @@ func (h *MyEventHandler) OnDDL(nextPos Position, queryEvent *QueryEvent) error {
 	return nil
 }
 
-func testCanal(){
+func testCanal() {
 	config := &MysqlConfig{}
 	config.Host = *testHost
 	config.User = *testUser
@@ -30,13 +31,22 @@ func testCanal(){
 	config.ServerID = 5004
 	config.Pos = Position{}
 
-
 	canal := NewCanal(config)
 
-	canal.SetEventHandler(&MyEventHandler{})
+	taskPool, err := NewTaskPool("root:123456@tcp(172.16.20.146:3307)/information_schema", 5)
+	if err != nil {
 
+	}
+
+	eventHandler := NewApplyDBEventHandler(taskPool)
+
+	canal.SetEventHandler(eventHandler)
 
 	canal.Start()
+
+	//table, _ := canal.GetTable("test1", "t2")
+
+	//log.Info(table.Name)
 
 	time.Sleep(10 * time.Second)
 }

@@ -22,9 +22,9 @@ func main() {
 
 	//testContext();
 
-	//testCanal()
+	testCanal()
 
-	testMysqlDriver()
+	//testMysqlDriver()
 
 	time.Sleep(time.Second * 5)
 }
