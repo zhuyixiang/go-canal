@@ -22,9 +22,35 @@ func main() {
 
 	//testContext();
 
-	testCanal()
+
+	//testCanal()
 
 	//testMysqlDriver()
+
+
+	//test slice
+
+	//array := make([]int, 0, 5000)
+	//
+	//oldCap := cap(array)
+	//count := 1000000
+	//for {
+	//	count--
+	//	if (count <0) {
+	//		break
+	//	}
+	//	array = append(array, 0)
+	//	if oldCap != cap(array) {
+	//		fmt.Printf("old cap is %s, new Cap is %s   \n", oldCap, cap(array))
+	//		oldCap = cap(array)
+	//	}
+	//
+	//}
+
+	//fmt.Println(array)
+
+	//fmt.Println(cap(array))
+
 
 	time.Sleep(time.Second * 5)
 }

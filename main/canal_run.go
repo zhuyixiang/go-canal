@@ -33,7 +33,7 @@ func testCanal() {
 
 	canal := NewCanal(config)
 
-	taskPool, err := NewTaskPool("root:123456@tcp(172.16.20.146:3307)/information_schema", 5)
+	taskPool, err := NewTaskPool("root:123456@tcp(172.16.20.146:3307)/information_schema", 1)
 	if err != nil {
 
 	}
@@ -42,6 +42,7 @@ func testCanal() {
 
 	canal.SetEventHandler(eventHandler)
 
+	//canal.SetEventHandler(&MyEventHandler{})
 	canal.Start()
 
 	//table, _ := canal.GetTable("test1", "t2")

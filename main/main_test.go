@@ -6,5 +6,6 @@ import (
 )
 
 func TestPrintNew(t *testing.T) {
+	fmt.Println()
 	fmt.Println("pass")
 }

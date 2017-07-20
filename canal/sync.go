@@ -56,6 +56,7 @@ func (c *Canal) startSyncBinlog(pos Position) error {
 			}
 		case *RowLogEvent:
 			// we only focus row based event
+			//log.Infof("receive a row event  %s", ev)
 			err = c.handleRowsEvent(ev)
 			if err != nil && errors.Cause(err) != ErrTableNotExist {
 				// We can ignore table not exist error
